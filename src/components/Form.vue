@@ -1,6 +1,6 @@
 <template>
  <div>
-    <b-field label="Enter Todo..">
+    <b-field label="Enter Todo Here..">
           <b-input v-model="message"  @keypress.native.enter="addTodo"></b-input>
       </b-field>
 </div>

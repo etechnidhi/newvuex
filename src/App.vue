@@ -3,7 +3,7 @@
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <div class="navbar-item">
-            VUEX
+            First Vuex Todo
         </div>
       </div>
     </nav>
@@ -16,7 +16,7 @@
       <div class="container">
         <div class="content has-text-centered">
           <p>
-            Sample Vuex App
+            Practise Purpose
           </p>
         </div>
       </div>
