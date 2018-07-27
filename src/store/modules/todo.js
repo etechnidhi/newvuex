@@ -5,13 +5,18 @@ export default {
     todos: [],
     addTodo: {
       id: "",
-      message: "",
       name: "",
       email: "",
       password: "",
-      confirm: ""
+      confirm: "",
+      message: ""
     },
-    isEdit: false
+    isEdit: false,
+  seen:false,
+  seenList: false,
+  status: false,
+  isActive: false,
+  formseen: true
   },
   getters: {
     allTodos: state => state.todos,
@@ -20,16 +25,23 @@ export default {
     }
   },
   mutations: {
+    TOGGLE (state,value) {
+      state.seen = value;
+    },
+    seenlist(state,value){
+      state.seenList = value;
+    },
+    isactive:(state,value)=>{
+      state.isActive = value;
+    },
+    formseen:(state,value)=>{
+      state.formseen = value;
+    },
     addTodo: (state, todo) => {
       state.todos.push(todo);
     },
     updateTodo: (state, item) => {
-      state.addTodo.id = item.id;
-      state.addTodo.name = item.name;
-      state.addTodo.email = item.email;
-      state.addTodo.password = item.password;
-      state.addTodo.confirm = item.confirm;
-      state.addTodo.message = item.message;
+      state.addTodo = item;
     },
     taskupdate: (state, todo) => {
       state.todos.forEach((addTodo,index) => {      
@@ -58,6 +70,16 @@ export default {
     },
     updateMessage: (state, msg) => {
       state.addTodo.message = msg;
+    },
+    blankform :(state,value) =>{
+  state.addTodo.id = value;
+  state.addTodo.name = value;
+  state.addTodo.email = value;
+  state.addTodo.password = value;
+  state.addTodo.confirm = value;
+  state.addTodo.message = value;
+  state.isEdit = false;      
     }
+
   }
 };
