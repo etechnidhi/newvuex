@@ -82,6 +82,7 @@ export default {
     },
     deleteItem: function(item) {
       this.todos.splice(this.todos.indexOf(item), 1);
+      this.$store.commit("TOGGLE",true)
     }
   }
 };

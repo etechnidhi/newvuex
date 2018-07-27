@@ -12,11 +12,11 @@ export default {
       message: ""
     },
     isEdit: false,
-  seen:false,
-  seenList: false,
-  status: false,
-  isActive: false,
-  formseen: true
+    seen: false,
+    seenList: false,
+    status: false,
+    isActive: false,
+    formseen: true
   },
   getters: {
     allTodos: state => state.todos,
@@ -25,16 +25,16 @@ export default {
     }
   },
   mutations: {
-    TOGGLE (state,value) {
+    TOGGLE(state, value) {
       state.seen = value;
     },
-    seenlist(state,value){
+    seenlist(state, value) {
       state.seenList = value;
     },
-    isactive:(state,value)=>{
+    isactive: (state, value) => {
       state.isActive = value;
     },
-    formseen:(state,value)=>{
+    formseen: (state, value) => {
       state.formseen = value;
     },
     addTodo: (state, todo) => {
@@ -44,9 +44,9 @@ export default {
       state.addTodo = item;
     },
     taskupdate: (state, todo) => {
-      state.todos.forEach((addTodo,index) => {      
+      state.todos.forEach((addTodo, index) => {
         if (addTodo.id === todo.id) {
-            Vue.set(state.todos,index,todo);
+          Vue.set(state.todos, index, todo);
         }
       });
     },
@@ -71,15 +71,16 @@ export default {
     updateMessage: (state, msg) => {
       state.addTodo.message = msg;
     },
-    blankform :(state,value) =>{
-  state.addTodo.id = value;
-  state.addTodo.name = value;
-  state.addTodo.email = value;
-  state.addTodo.password = value;
-  state.addTodo.confirm = value;
-  state.addTodo.message = value;
-  state.isEdit = false;      
+    blankform: (state, value) => {
+      state.addTodo.id = value;
+      state.addTodo.name = value;
+      state.addTodo.email = value;
+      state.addTodo.password = value;
+      state.addTodo.confirm = value;
+      state.addTodo.message = value;
+      state.isEdit = false;
+      state.isActive = false;
+      state.formseen = true;
     }
-
   }
 };
