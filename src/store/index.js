@@ -1,14 +1,15 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import todo from './modules/todo'
+import Vue from "vue";
+import Vuex from "vuex";
+import login from "./modules/login";
+import createPersistedState from "vuex-persistedstate";
 
-Vue.use(Vuex)
-
-const debug = process.env.NODE_ENV !== 'production'
+Vue.use(Vuex);
+const debug = process.env.Node_ENV !== "production";
 
 export default new Vuex.Store({
   modules: {
-    todo,
+    login
   },
-  strict: debug
-})
+  strict: debug,
+  plugins: [createPersistedState()]
+});
