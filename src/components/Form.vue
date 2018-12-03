@@ -121,6 +121,7 @@
 </script>
 
 <style>
+<<<<<<< HEAD
   .field.has-addons {
     display: block !important;
   }
@@ -133,3 +134,6 @@
     margin-right: 25px !important;
   }
 </style>
+=======
+</style>
+>>>>>>> 060602daab01e870919effe0afbdb58313cb9fcb

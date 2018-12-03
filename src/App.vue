@@ -1,35 +1,31 @@
 <template>
-  <div id="app">
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <div class="navbar-item">
-            First Vuex Todo
-        </div>
-      </div>
-    </nav>
-    
-    <section class="section">
-        <List />
-    </section>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          <p>
-            Practise Purpose
-          </p>
-        </div>
-      </div>
-    </footer>
+  <div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import List from './components/List.vue';
+import { mapGetters } from "vuex";
 export default {
-  name: 'app',
-  components: {
-    List
+  name: "app",
+  computed: {
+    ...mapGetters(["isLoggedIn"])
+  },
+  mounted: function() {
+    if (this.isLoggedIn) {
+      this.$router.push("/profile");
+    }
   }
-}
+};
 </script>
+
+<style>
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
