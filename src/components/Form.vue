@@ -37,100 +37,99 @@
 </template>
 
 <script>
-
-let count = 0;
-export default {
-  name: "Form",
-  computed: {
-    id: {
-      set: function(val) {
-        this.$store.commit("updateId", val);
-      },
-      get: function() {
-        return this.$store.state.todo.addTodo.id;
-      }
-    },
-    name: {
-      set: function(val) {
-        this.$store.commit("updateName", val);
-      },
-      get: function() {
-        return this.$store.state.todo.addTodo.name;
-      }
-    },
-    email: {
-      set: function(val) {
-        this.$store.commit("updateEmail", val);
-      },
-      get: function() {
-        return this.$store.state.todo.addTodo.email;
-      }
-    },
-    password: {
-      set: function(val) {
-        this.$store.commit("updatePassword", val);
-      },
-      get: function() {
-        return this.$store.state.todo.addTodo.password;
-      }
-    },
-    confirm: {
-      set: function(val) {
-        this.$store.commit("updateConfirm", val);
-      },
-      get: function() {
-        return this.$store.state.todo.addTodo.confirm;
-      }
-    },
-    message: {
-      set: function(val) {
-        this.$store.commit("updateMessage", val);
-      },
-      get: function() {
-        return this.$store.state.todo.addTodo.message;
-      }
-    }
-  },
-
-  methods: {
-    submit: function() {
-      if (this.$store.state.todo.isEdit) {
-        if (this.$store.state.todo.addTodo.id == this.id) {
-          this.$store.commit("taskupdate", this.$store.state.todo.addTodo);
+  let count = 0;
+  export default {
+    name: "Form",
+    computed: {
+      id: {
+        set: function(val) {
+          this.$store.commit("updateId", val);
+        },
+        get: function() {
+          return this.$store.state.todo.addTodo.id;
         }
-        this.$store.commit("isactive", true);
-        this.$store.commit("formseen", false);
-      } else {
-        this.id = count++;
-        this.$store.commit("addTodo", {
-          id: count,
-          name: this.$store.state.todo.addTodo.name,
-          email: this.$store.state.todo.addTodo.email,
-          password: this.$store.state.todo.addTodo.password,
-          confirm: this.$store.state.todo.addTodo.confirm,
-          message: this.$store.state.todo.addTodo.message
-        });
-        this.$store.commit("blankform", "");
-        this.$store.commit("isactive", true);
-        this.$store.commit("formseen", false);
+      },
+      name: {
+        set: function(val) {
+          this.$store.commit("updateName", val);
+        },
+        get: function() {
+          return this.$store.state.todo.addTodo.name;
+        }
+      },
+      email: {
+        set: function(val) {
+          this.$store.commit("updateEmail", val);
+        },
+        get: function() {
+          return this.$store.state.todo.addTodo.email;
+        }
+      },
+      password: {
+        set: function(val) {
+          this.$store.commit("updatePassword", val);
+        },
+        get: function() {
+          return this.$store.state.todo.addTodo.password;
+        }
+      },
+      confirm: {
+        set: function(val) {
+          this.$store.commit("updateConfirm", val);
+        },
+        get: function() {
+          return this.$store.state.todo.addTodo.confirm;
+        }
+      },
+      message: {
+        set: function(val) {
+          this.$store.commit("updateMessage", val);
+        },
+        get: function() {
+          return this.$store.state.todo.addTodo.message;
+        }
       }
-      this.count++;
-      this.$store.commit("isedit", false);
+    },
+  
+    methods: {
+      submit: function() {
+        if (this.$store.state.todo.isEdit) {
+          if (this.$store.state.todo.addTodo.id == this.id) {
+            this.$store.commit("taskupdate", this.$store.state.todo.addTodo);
+          }
+          this.$store.commit("isactive", true);
+          this.$store.commit("formseen", false);
+        } else {
+          this.id = count++;
+          this.$store.commit("addTodo", {
+            id: count,
+            name: this.$store.state.todo.addTodo.name,
+            email: this.$store.state.todo.addTodo.email,
+            password: this.$store.state.todo.addTodo.password,
+            confirm: this.$store.state.todo.addTodo.confirm,
+            message: this.$store.state.todo.addTodo.message
+          });
+          this.$store.commit("blankform", "");
+          this.$store.commit("isactive", true);
+          this.$store.commit("formseen", false);
+        }
+        this.count++;
+        this.$store.commit("isedit", false);
+      }
     }
-  }
-};
+  };
 </script>
 
 <style>
-.field.has-addons {
-  display: block !important;
-}
-
-.two-button {
-  margin: 0 auto;
-}
-
-button {
-  margin-right: 25px !important;
-}
+  .field.has-addons {
+    display: block !important;
+  }
+  
+  .two-button {
+    margin: 0 auto;
+  }
+  
+  button {
+    margin-right: 25px !important;
+  }
 </style>

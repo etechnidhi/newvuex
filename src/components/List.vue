@@ -7,7 +7,7 @@
     <br/><br/>
     <div class="show-form">
       <Form v-if="$store.state.todo.seen" />
-    </div>  
+    </div>
     <br/>
     <div>
       <!-- <table v-if="seenList"> -->
@@ -43,74 +43,77 @@
 
 
 <script>
-import Form from "./Form";
-import { mapGetters } from "vuex";
-
-export default {
-  name: "List",
-  components: {
-    Form
-  },
-  data() {
-    return {   
-      status: false
-    };
-  },
-  computed: {
-    ...mapGetters({
-      todos: "allTodos"
-    })
-  },
-  methods: {
-    addForm: function() {
-      if (this.$store.state.todo.isEdit == false) {
-        this.$store.commit("TOGGLE",true)
-        this.$store.commit("seenlist",false);
+  import Form from "./Form";
+  import {
+    mapGetters
+  } from "vuex";
+  
+  export default {
+    name: "List",
+    components: {
+      Form
+    },
+    data() {
+      return {
+        status: false
+      };
+    },
+    computed: {
+      ...mapGetters({
+        todos: "allTodos"
+      })
+    },
+    methods: {
+      addForm: function() {
+        if (this.$store.state.todo.isEdit == false) {
+          this.$store.commit("TOGGLE", true);
+          this.$store.commit("seenlist", false);
+        }
+        this.$store.commit("blankform", "");
+      },
+      showList: function() {
+        this.$store.commit("TOGGLE", false);
+        this.$store.commit("seenlist", true);
+      },
+      editfrom: function(item) {
+        this.$store.commit("seenlist", false);
+        this.$store.commit("TOGGLE", true);
+        this.$store.commit("updateTodo", item);
+        this.$store.commit("isedit", true);
+      },
+      deleteItem: function(item) {
+        this.todos.splice(this.todos.indexOf(item), 1);
+        this.$store.commit("TOGGLE", true);
       }
-       this.$store.commit("blankform",""); 
-    },
-    showList: function() {
-        this.$store.commit("TOGGLE",false);
-        this.$store.commit("seenlist",true);
-
-    },
-    editfrom: function(item) {
-        this.$store.commit("seenlist",false);
-        this.$store.commit("TOGGLE",true)
-      this.$store.commit("updateTodo", item);
-      this.$store.commit("isedit", true);
-    },
-    deleteItem: function(item) {
-      this.todos.splice(this.todos.indexOf(item), 1);
-      this.$store.commit("TOGGLE",true)
     }
-  }
-};
+  };
 </script>
 
 <style>
-a {
-  color: black;
-}
-.two-button {
-  text-align: center;
-}
-
-.show-form {
-  margin: 0 auto;
-  width: 60%;
-}
-
-.checked {
-  text-decoration: line-through;
-  color: #e6e6e6;
-}
-
-.a {
-  margin-right: 15px;
-  font-weight: bold;
-}
-table{
-  margin: 0 auto;
-}
+  a {
+    color: black;
+  }
+  
+  .two-button {
+    text-align: center;
+  }
+  
+  .show-form {
+    margin: 0 auto;
+    width: 60%;
+  }
+  
+  .checked {
+    text-decoration: line-through;
+    color: #e6e6e6;
+  }
+  
+  .a {
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  
+  table {
+    margin: 0 auto;
+  }
 </style>
